@@ -1,0 +1,15 @@
+rm *.thm
+rm *.toc
+rm *.out
+rm *.aux
+rm *.log
+rm *.bcf
+rm *.xml
+rm *.fls
+rm *.bbl
+rm *.blg
+rm *.dvi
+rm *latexmk
+rm *.nav
+rm *.snm
+rm *.vrb
