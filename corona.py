@@ -17,8 +17,21 @@ Help functions
 def read_input(input_file='input_data/input.csv'):
     f = open(input_file,'r')
     content = f.read().strip().split('\n')
-    a_inp = list(map(float,content[0].split(';')))
-    d_inp = list(map(float,content[1].split(';')))
+    #content = f.readlines()
+    a_inp = []
+    for x in content[0].split(';'):
+        out = ''
+        for y in x:
+            if y.isdigit(): out += y
+        a_inp.append(float(out))
+    d_inp = []
+    for x in content[1].split(';'):
+        out = ''
+        for y in x:
+            if y.isdigit(): out += y
+        d_inp.append(float(out))
+    #a_inp = list(map(lambda x:float(x.strip()),content[0].split(';')))
+    #d_inp = list(map(lambda x:float(x.strip()),content[1].split(';')))
     days_inp = len(a_inp)
     assert len(a_inp) == len(d_inp), 'Unequal length of deaths and sick people in input.'
     f.close()
