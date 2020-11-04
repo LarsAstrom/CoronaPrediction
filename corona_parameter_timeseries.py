@@ -1,5 +1,4 @@
 import sys
-import heapq
 import time
 import corona
 

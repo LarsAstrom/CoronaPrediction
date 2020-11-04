@@ -2,7 +2,6 @@
 days = 300
 pop = 1.377e6
 a_weight = 0.8
-#K*gamma = 3
 
 #Parameters that do change (possible values in list)
 alpha_list = [i*1e-4 for i in range(1,8)]
@@ -18,7 +17,6 @@ Help functions
 def read_input(input_file='input_data/input.csv'):
     f = open(input_file,'r')
     content = f.read().strip().split('\n')
-    #content = f.readlines()
     a_inp = []
     for x in content[0].split(';'):
         out = ''
@@ -31,8 +29,6 @@ def read_input(input_file='input_data/input.csv'):
         for y in x:
             if y.isdigit(): out += y
         d_inp.append(float(out))
-    #a_inp = list(map(lambda x:float(x.strip()),content[0].split(';')))
-    #d_inp = list(map(lambda x:float(x.strip()),content[1].split(';')))
     days_inp = len(a_inp)
     assert len(a_inp) == len(d_inp), 'Unequal length of deaths and sick people in input.'
     f.close()
@@ -66,7 +62,6 @@ def exp_mse(a,b,w):
 
 def score(a_inp,a,d_inp,d,a_weight=a_weight,exp_weight=1):
     return a_weight*exp_mse(a,a_inp,exp_weight) + (1-a_weight)*exp_mse(d,d_inp,exp_weight)
-    # return a_weight*mse(a_inp,a) + (1-a_weight)*mse(d_inp,d)
 
 def run_simul(alpha,beta,gamma,L,K,i_start,stop=None,bugfix=False):
     num_days = stop if stop != None else days
